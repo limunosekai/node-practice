@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../img/layout/logo.jpg';
 
 function Header() {
   return (
@@ -26,38 +27,34 @@ function Header() {
       <div className='h_nav ct1 af'>
         <div className='logo'>
           <Link to={'/'}>
-            <img
-              src={require('../../img/layout/logo.jpg')}
-              height='65px'
-              width='200px'
-              alt=''
-            />
+            <img src={logo} height='65px' width='200px' alt='' />
           </Link>
         </div>
         <nav className='gnb gnb_admin'>
           <ul className='af'>
             <li className='menulist'>
-              <Link to={'/UserApproval'}>사용자관리</Link>
+              <Link to={'/UserApproval'}>사용자 관리</Link>
             </li>
             <li className='menulist'>
-              <Link to={'/AdminResearchProject'}>Research Projects</Link>
+              <Link to={'/AdminResearchProject'}>Research Projects 관리</Link>
             </li>
             <li className='menulist'>
-              <Link to={'/SoftwareList'}>Software Tools</Link>
+              <Link to={'/SoftwareList'}>Software Tools 관리</Link>
             </li>
             <li className='menulist'>
-              <Link to={'/AdminDataSourceList'}>Data Sources</Link>
+              <Link to={'/AdminDataSourceList'}>Data Sources 관리</Link>
+            </li>
+            {/* 드롭다운 이벤트 */}
+            <li className='menulist'>
+              <Link to={'/floatPopulationList'}>유동인구 조회</Link>
+              <ul className='gn_2'>
+                <li>
+                  <Link to={'/community/notice'}>공지사항</Link>
+                </li>
+              </ul>
             </li>
             <li className='menulist'>
-              <Link to={'/floatPopulationList'}>유동인구조회</Link>
-            </li>
-            <ul className='gn_2'>
-              <li>
-                <Link to={'/community/notice'}>공지사항</Link>
-              </li>
-            </ul>
-            <li className='menulist'>
-              <Link className='menulist'>Sub code</Link>
+              <Link to={'/SubCodeManage'}>Sub code 관리</Link>
             </li>
           </ul>
         </nav>

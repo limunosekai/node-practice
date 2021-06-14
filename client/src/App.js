@@ -13,7 +13,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path='/' component={LoginForm} />
-        <Route exact path='SoftwareList' component={SoftwareList} />
+        <Route exact path='/SoftwareList' component={SoftwareList} />
       </Switch>
       <Footer />
     </div>

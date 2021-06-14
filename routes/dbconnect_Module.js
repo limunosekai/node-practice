@@ -16,6 +16,7 @@ const connection = mysql.createConnection({
 
 router.post('/', (req, res) => {
   const mybatisMapper = require('mybatis-mapper');
+
   let param = req.body;
 
   // mybatis mapper 경로 설정

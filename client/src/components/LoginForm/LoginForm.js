@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logImg from '../../img/main/log_img.png';
+import mLogI3 from '../../img/main/m_log_i3.png';
+import mLogI2 from '../../img/main/m_log_i2.png';
 
 function LoginForm() {
   return (
@@ -7,7 +10,7 @@ function LoginForm() {
       <div className='m_login'>
         <h3>
           <span>
-            <img src={require('../../img/main/log_img.png')} alt='' />
+            <img src={logImg} alt='' />
           </span>
           LOGIN
         </h3>
@@ -15,7 +18,7 @@ function LoginForm() {
           <form>
             <div className='in_ty1'>
               <span>
-                <img src={require('../../img/main/m_log_i3.png')} alt='' />
+                <img src={mLogI3} alt='' />
               </span>
               <input
                 type='text'
@@ -26,7 +29,7 @@ function LoginForm() {
             </div>
             <div className='in_ty1'>
               <span className='ic_2'>
-                <img src={require('../../img/main/m_log_i2.png')} alt='' />
+                <img src={mLogI2} alt='' />
               </span>
               <input type='password' placeholder='비밀번호' />
             </div>
