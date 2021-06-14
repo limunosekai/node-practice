@@ -6,7 +6,9 @@ const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
 // mysql 서버 접속 정보
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
+  connectionLimit: 66,
+  waitForConnections: true,
   host: 'node-test.cikkio2zzjwp.us-east-2.rds.amazonaws.com',
   port: '3306',
   database: 'react',
@@ -38,15 +40,26 @@ router.post('/', (req, res) => {
     '* mapper namespace : ' + param.mapper + '.' + param.mapper_id + ' *\n'
   );
 
-  connection.query(query, (err, results) => {
-    if (err) console.log('db error : ' + err);
-    let time2 = new Date();
-    console.log('####' + time2 + '####');
-    console.log('#### RESULT DATA LIST #### : \n', results);
-    string = JSON.stringify(results);
-    let json = JSON.parse(string);
-    res.send({ json });
-    console.log('========= Node Mybatis Query Log End ========');
+  pool.getConnection((err, connection) => {
+    connection.query(query, (error, results) => {
+      if (error) console.log('db error : ' + error);
+      let time2 = new Date();
+      console.log('####' + time2 + '####');
+      console.log('#### RESULT DATA LIST #### : \n', results);
+      if (results !== undefined) {
+        string = JSON.stringify(results);
+        let json = JSON.parse(string);
+        if (req.body.crud === 'select') {
+          res.send({ json });
+        } else {
+          res.send('success');
+        }
+      } else {
+        res.send('error');
+      }
+      connection.release();
+      console.log('========= Node Mybatis Query Log End ========');
+    });
   });
 });
 
