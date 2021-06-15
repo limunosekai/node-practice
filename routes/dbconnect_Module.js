@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
         if (req.body.crud === 'select') {
           res.send({ json });
         } else {
-          res.send('success');
+          res.send('succ');
         }
       } else {
         res.send('error');
